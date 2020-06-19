@@ -23,6 +23,7 @@ fn get_version_from_erl() -> Option<String> {
     ];
 
     let version = Command::new("erl").args(&args).output().ok()?.stdout;
+    dbg!(&version);
 
     let version = String::from_utf8(version).ok()?;
 
