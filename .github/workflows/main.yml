@@ -20,18 +20,16 @@ jobs:
           override: true
 
       - name: Extend PATH
-        run: echo "C:\\ProgramData\\chocolatey\\lib\\Elixir\\bin" >> $GITHUB_PATH
+        run: echo "C:\\ProgramData\\chocolatey\\lib\\Elixir\\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
 
       - name: Get the PATH
-        run: echo $PATH
+        run: echo $GITHUB_PATH
 
       - name: Get the GITHUB_PATH
         run: echo $GITHUB_PATH
 
       - name: Hex
-        run: |
-          echo "C:\\ProgramData\\chocolatey\\lib\\Elixir\\bin" >> $GITHUB_PATH
-          mix local.hex --force
+        run: mix local.hex --force
 
       - name: Test rustler_mix
         working-directory: rustler_mix
