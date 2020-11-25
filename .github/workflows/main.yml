@@ -29,7 +29,9 @@ jobs:
         run: echo $GITHUB_PATH
 
       - name: Hex
-        run: mix local.hex --force
+        run: |
+          echo "C:\\ProgramData\\chocolatey\\lib\\Elixir\\bin" >> $GITHUB_PATH
+          mix local.hex --force
 
       - name: Test rustler_mix
         working-directory: rustler_mix
